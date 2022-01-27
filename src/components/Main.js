@@ -2,7 +2,7 @@ import './Main.css';
 import { useEffect, useState } from 'react';
 import { sortData } from './data/sortData';
 import { yearsData } from './data/yearsData';
-import Table from './Table'
+import Table from './Table';
 const axios = require('axios');
 
 const Main = () => {
@@ -42,35 +42,33 @@ const Main = () => {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    filterAirports()
+    e.preventDefault();
+    filterAirports();
     // setYear(2003)
     // setCodes([])
     // setCondition('Total')
-  }
+  };
 
-  const filterAirports = ()  => {
-    filterByYearAndCode(allData,year,codes)
-  }
+  const filterAirports = () => {
+    filterByYearAndCode(allData, year, codes);
+  };
 
-  const filterByYearAndCode = ( ) => {
-    console.log('item', typeof   allData[0], codes)
-    const airportByYear = allData.filter( (singleAirport) => {
-      return  (singleAirport.Airport.Code === codes[0] && singleAirport.Time.Year === parseInt(year));
-    })
-    console.log('airportByYear', airportByYear)
-  }
-
-
+  const filterByYearAndCode = () => {
+    const airportByYear = allData.filter((singleAirport) => {
+      return (
+        singleAirport.Airport.Code === codes[0] &&
+        singleAirport.Time.Year === parseInt(year)
+      );
+    });
+  };
 
   useEffect(() => {
     fetchData();
   }, []);
-  console.log('cond', year, codes, condition);
   return (
     <div className="main">
       {allData.length ? (
-        <div className='container'>
+        <div className="container">
           <form>
             <label htmlFor="condition"> Show </label>
             <select name="conditions" id="conditions" onChange={handleChange}>
@@ -119,7 +117,7 @@ const Main = () => {
         <h1>Loading </h1>
       )}
 
-  <Table />
+      <Table />
     </div>
   );
 };
