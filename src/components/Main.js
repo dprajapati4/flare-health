@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-
+import './Main.css'
 const axios = require('axios');
 
 const Main = () => {
@@ -7,8 +7,9 @@ const Main = () => {
 
   const fetchData = async () => {
     try {
-      const { data } = await axios.get('https://flare-code-exercise-data.s3.amazonaws.com/airlines.json');
-      console.log('the data', data)
+      const { data } = await axios.get(
+        'https://flare-code-exercise-data.s3.amazonaws.com/airlines.json'
+      );
       setAllData(data);
     } catch (error) {
       console.log('Error in fetching the data ', error);
@@ -19,9 +20,10 @@ const Main = () => {
     fetchData();
   }, []);
 
-  return (<div className="Main">
+  return <div className="main">
 
-  </div>)
+
+  </div>;
 };
 
 export default Main;
